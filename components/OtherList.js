@@ -37,10 +37,11 @@ const OtherList = ({ other, setOther }) => {
         data={others}
         renderItem={({ item, index }) => (
           <TouchableOpacity
+            key={index}
             style={{ flex: 1, backgroundColor: 'lightblue', width: width * 0.8, height: height * 0.45, marginHorizontal: 50 }}
             onPress={handleVisibleOther}>
             <Image
-              key={index}
+
               style={{ width: '100%', height: '100%' }}
               resizeMode='cover'
               source={{ uri: item.image }}
