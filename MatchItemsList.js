@@ -53,17 +53,26 @@ const MatchItemsList = () => {
   }, [look])
 
   useEffect(() => {
-    setLooks([...looks, look])
+    //  prevent double looks
+    if (looks.find((l) => l.top === look.top && l.other === look.other)) { setLooks(looks) } else { setLooks([...looks, look]) }
   }, [look])
 
 
 
 
   return (
-    <View style={{ flex: 1, alignItems: 'center' }}>
+    <View style={{
+      marginVertical: 70,
+      marginHorizontal: 30,
+      borderRadius: 30,
+      flex: 1,
+      backgroundColor: '#c8d6d5',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+    }}>
 
-      <View style={{ flexDirection: 'row', height: height * 0.1, width: width * 0.85, justifyContent: 'space-around' }}>
-        <TouchableOpacity style={{ width: width * 0.4, justifyContent: 'center', alignItems: 'center', padding: 10, marginVertical: 20, backgroundColor: '#c8d6d5', borderRadius: 10 }} onPress={() => {
+      <View style={{ flexDirection: 'row', height: height * 0.1, width: width * 0.85, justifyContent: 'space-around', paddingHorizontal: 20 }}>
+        <TouchableOpacity style={{ width: width * 0.3, justifyContent: 'center', alignItems: 'center', padding: 10, margin: 15, backgroundColor: '#d7e6e5', borderRadius: 10 }} onPress={() => {
           setLook({ id: Date.now(), top: top, other: other })
           //setLooks([...looks, look])
           // console.log(look, looks)
@@ -74,7 +83,7 @@ const MatchItemsList = () => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={{ width: width * 0.4, justifyContent: 'center', alignItems: 'center', padding: 10, marginVertical: 20, backgroundColor: '#c8d6d5', borderRadius: 10, justifyContent: 'center' }}
+          style={{ width: width * 0.4, justifyContent: 'center', alignItems: 'center', padding: 10, margin: 15, backgroundColor: '#d7e6e5', borderRadius: 10 }}
           onPress={() => {
             setLooks(looks)
             //console.log(looks)
@@ -123,6 +132,16 @@ const MatchItemsList = () => {
 
         </View>
       </View>
+      <TouchableOpacity
+        style={{ width: width * 0.7, justifyContent: 'center', alignItems: 'center', padding: 10, margin: 15, backgroundColor: '#d7e6e5', borderRadius: 10 }}
+        onPress={() => {
+
+          //console.log(looks)
+          navigation.navigate("Add Item to Match")
+
+        }} >
+        <Text style={{ fontSize: 20, color: '#4e4d4d' }}>Add More Items to Match</Text>
+      </TouchableOpacity>
 
     </View >
   )

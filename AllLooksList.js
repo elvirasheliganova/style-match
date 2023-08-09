@@ -16,9 +16,13 @@ const AllLooksList = ({ route, navigation }) => {
   ] */
 
   const renderItem = ({ item, index }) => (
-    <View>
-      <Text>{item.top.id}</Text>
+    <View
+      style={{
+        margin: 10
 
+      }}>
+      {/*   <Text>{item.top.id}</Text>
+ */}
 
       <Image
 
@@ -38,14 +42,46 @@ const AllLooksList = ({ route, navigation }) => {
   )
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'pink' }}>
+    <View style={{
+      marginVertical: 70,
+      marginHorizontal: 30,
+      paddingTop: 30,
+      borderRadius: 30,
+      flex: 1,
+      backgroundColor: '#c8d6d5',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
 
       <FlatList
-        horizontal
+        // horizontal
         data={data}
         renderItem={renderItem}
+        numColumns={2}
 
       />
+      <TouchableOpacity
+        style={{ width: width * 0.7, backgroundColor: '#d7e6e5', borderRadius: 10, marginBottom: 10, }}
+        onPress={() => {
+          navigation.navigate('Match Items')
+        }
+        }>
+        <Text
+          style={{ fontSize: 20, color: '#4e4d4d', marginHorizontal: 45, marginVertical: 10, textAlign: 'center' }}>
+          Make more looks
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{ width: width * 0.7, justifyContent: 'center', alignItems: 'center', padding: 10, margin: 15, backgroundColor: '#d7e6e5', borderRadius: 10 }}
+        onPress={() => {
+
+          //console.log(looks)
+          navigation.navigate("Add Item to Match")
+
+        }} >
+        <Text style={{ fontSize: 20, color: '#4e4d4d' }}>Add More Items to Match</Text>
+      </TouchableOpacity>
+
 
     </View>
   )

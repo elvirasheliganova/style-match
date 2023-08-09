@@ -30,7 +30,7 @@ const TopList = ({ top, setTop }) => {
   }, [activeTopId])
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: 'pink', marginHorizontal: 30 }}>
       {/*   <Text style={{}}>Tops</Text>
  */}
       <FlatList
@@ -38,7 +38,7 @@ const TopList = ({ top, setTop }) => {
         renderItem={({ item, index }) => (
           <TouchableOpacity
             key={index}
-            style={{ flex: 1, backgroundColor: 'lightblue', width: width * 0.8, height: height * 0.45, marginHorizontal: 50 }}
+            style={{ flex: 1, backgroundColor: 'lightblue', width: width * 0.8, height: height * 0.45, }}
             onPress={handleVisibleTop}>
             <Image
 

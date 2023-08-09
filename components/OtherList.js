@@ -30,7 +30,7 @@ const OtherList = ({ other, setOther }) => {
   }, [activeOtherId])
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center', marginHorizontal: 30 }}>
       {/*  <Text style={{}}>Others</Text> */}
 
       <FlatList
@@ -38,7 +38,7 @@ const OtherList = ({ other, setOther }) => {
         renderItem={({ item, index }) => (
           <TouchableOpacity
             key={index}
-            style={{ flex: 1, backgroundColor: 'lightblue', width: width * 0.8, height: height * 0.45, marginHorizontal: 50 }}
+            style={{ flex: 1, backgroundColor: 'lightblue', width: width * 0.8, height: height * 0.45, }}
             onPress={handleVisibleOther}>
             <Image
 

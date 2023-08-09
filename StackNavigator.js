@@ -47,8 +47,8 @@ const StackNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Add Item to Match" component={AddItemList} options={{ headerShown: false }} />
-      <Stack.Screen name="Match Items" component={MatchItemsList} options={{ headerTitle: " " }} />
-      <Stack.Screen name="All Looks" component={AllLooksList} />
+      <Stack.Screen name="Match Items" component={MatchItemsList} options={{ headerShown: false }} />
+      <Stack.Screen name="All Looks" component={AllLooksList} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }
