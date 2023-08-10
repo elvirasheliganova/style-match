@@ -3,11 +3,8 @@ import React, { useState, createContext } from 'react'
 
 export const TotalWardrobeContext = createContext()
 
-
-
 export const TotalWardrobeStateProvider = props => {
 
-  //const [wardrobe, setWardrobe] = useState([])
   const [totalWardrobe, setTotalWardrobe] = useState([])
 
   return (

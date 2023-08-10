@@ -11,7 +11,6 @@ const TopList = ({ top, setTop, wardrobe }) => {
   const tops = wardrobe.filter((w) => w.tag === "top")
   const [activeTopId, setActiveTopId] = useState();
   const activeTop = tops.find((o) => activeTopId === o.id)
-  console.warn(totalWardrobe.wardrobe)
   const viewabilityConfig = {
     itemVisiblePercentThreshold: 51,
   };
@@ -19,20 +18,16 @@ const TopList = ({ top, setTop, wardrobe }) => {
   const onViewableItemsChanged = useRef(
     ({ viewableItems }) => {
       setActiveTopId(viewableItems[0].item.id);
-
     },
   );
-  //const handleVisibleTop = () => { }
 
   useEffect(() => {
     setTop(activeTop)
-    //console.warn(other)
   }, [activeTopId])
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: 'pink', marginHorizontal: 30 }}>
-      {/*   <Text style={{}}>Tops</Text>
- */}
+
       <FlatList
         data={tops}
         renderItem={({ item, index }) => (
@@ -41,11 +36,9 @@ const TopList = ({ top, setTop, wardrobe }) => {
             style={{ flex: 1, backgroundColor: 'lightblue', width: width * 0.8, height: height * 0.45, }}
             onPress={{}}>
             <Image
-
               style={{ width: '100%', height: '100%' }}
               resizeMode='cover'
               source={{ uri: item.image }}
-
             />
           </TouchableOpacity>
 

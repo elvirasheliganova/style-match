@@ -11,7 +11,6 @@ const OtherList = ({ other, setOther, wardrobe }) => {
   const others = wardrobe.filter((w) => w.image !== 0 && w.tag !== "top")
   const [activeOtherId, setActiveOtherId] = useState();
   const activeOther = others.find((o) => activeOtherId === o.id)
-  //console.warn(others)
   const viewabilityConfig = {
     itemVisiblePercentThreshold: 51,
   };
@@ -22,16 +21,13 @@ const OtherList = ({ other, setOther, wardrobe }) => {
 
     },
   );
-  // const handleVisibleOther = () => { }
 
   useEffect(() => {
     setOther(activeOther)
-    //console.warn(other)
   }, [activeOtherId])
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center', marginHorizontal: 30 }}>
-      {/*  <Text style={{}}>Others</Text> */}
 
       <FlatList
         data={others}
