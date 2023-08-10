@@ -1,17 +1,18 @@
 import { View, Text } from 'react-native'
 import React, { useState, createContext } from 'react'
 
-export const WardrobeContext = createContext()
+export const TotalWardrobeContext = createContext()
 
 
 
-export const WardrobeStateProvider = props => {
+export const TotalWardrobeStateProvider = props => {
 
-  const [wardrobe, setWardrobe] = useState([])
+  //const [wardrobe, setWardrobe] = useState([])
+  const [totalWardrobe, setTotalWardrobe] = useState([])
 
   return (
-    <WardrobeContext.Provider value={[wardrobe, setWardrobe]}>
+    <TotalWardrobeContext.Provider value={[totalWardrobe, setTotalWardrobe]}>
       {props.children}
-    </WardrobeContext.Provider>
+    </TotalWardrobeContext.Provider>
   );
 };

@@ -1,6 +1,6 @@
 import { View, Text, Pressable, Image, TouchableOpacity } from 'react-native'
 import { StyleSheet } from 'react-native'
-import { WardrobeContext } from './Context'
+import { TotalWardrobeContext } from './Context'
 import ImagePicker from './components/ImagePicker'
 import React, { useState, useEffect, useContext } from 'react'
 import ItemTag from './components/ItemTag'
@@ -11,15 +11,24 @@ const AddItemList = () => {
   const navigation = useNavigation()
   const [image, setImage] = useState(null);
   const [look, setLook] = useState({})
+  const [add, setAdd] = useState(false)
   const [tag, setTag] = useState({})
-  // const [wardrobe, setWardrobe] = useState([])
-  const [wardrobe, setWardrobe] = useContext(WardrobeContext)
+  const [wardrobe, setWardrobe] = useState([])
+  const [TotalWardrobe, setTotalWardrobe] = useContext(TotalWardrobeContext)
   //console.warn(wardrobe)
 
-  /*   useEffect(() => {
-      setImage(null)
-        , []
-    }) */
+  useEffect(() => {
+    setWardrobe(wardrobe)
+    console.log(wardrobe)
+      , [wardrobe]
+  })
+  useEffect(() => {
+    if (add && wardrobe)
+      navigation.navigate('Match Items', { wardrobe })
+    console.log(wardrobe)
+    setAdd(false)
+      , [wardrobe]
+  })
 
 
   return (
@@ -44,6 +53,8 @@ const AddItemList = () => {
             onPress={() => {
               setWardrobe([...wardrobe, { tag: tag, id: Date.now(), image: image }])
               setImage(null)
+
+
             }
             }>
             <Text style={{ fontSize: 20, color: "#7e7b7b", marginHorizontal: 45, marginVertical: 15 }}>Add More Items</Text>
@@ -56,10 +67,15 @@ const AddItemList = () => {
       <TouchableOpacity
         style={{ backgroundColor: "#d6fbee", borderRadius: 20, marginBottom: 40, }}
         onPress={() => {
-          navigation.navigate('Match Items')
 
           setWardrobe([...wardrobe, { tag: tag, id: Date.now(), image: image }])
+          //setTotalWardrobe(wardrobe)
           setImage(null)
+          setAdd(true)
+          // navigation.navigate('Match Items', { wardrobe })
+
+
+
         }
         }>
         <Text

@@ -1,11 +1,13 @@
 import { View, Text, Image, useWindowDimensions, FlatList, TouchableOpacity } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { TotalWardrobeContext } from './Context'
 import LooksList from './LooksList'
 
 const AllLooksList = ({ route, navigation }) => {
   const { width, height } = useWindowDimensions()
   const { looks } = route.params
   const data = looks.filter(l => l.id)
+  const [totalWardrobe, setTotalWardrobe] = useContext(TotalWardrobeContext)
   console.log(data)
   /* const looks = [
 
@@ -14,7 +16,9 @@ const AllLooksList = ({ route, navigation }) => {
 
     { "id": 1691092407316, "other": { "id": 1691091966702, "image": "file:///Users/elviraselyganova/Library/Developer/CoreSimulator/Devices/79F9C24A-E8F1-4961-9887-80A2042537AE/data/Containers/Data/Application/7A309742-3997-406E-AC29-9F7811117FA0/Library/Caches/ExponentExperienceData/%2540anonymous%252Fstyle-match-0d6b4c0b-ae1e-420c-8b40-40e3696805e1/ImagePicker/CBD59FD6-5E31-48E9-8E98-0C86136848DE.jpg", "tag": "throuser" }, "top": { "id": 1691091907830, "image": "file:///Users/elviraselyganova/Library/Developer/CoreSimulator/Devices/79F9C24A-E8F1-4961-9887-80A2042537AE/data/Containers/Data/Application/7A309742-3997-406E-AC29-9F7811117FA0/Library/Caches/ExponentExperienceData/%2540anonymous%252Fstyle-match-0d6b4c0b-ae1e-420c-8b40-40e3696805e1/ImagePicker/DA8D8D24-CE25-4D54-81DD-846C7DE3EB57.jpg", "tag": "top" } }
   ] */
-
+  useEffect(() => {
+    //setTotalWardrobe([wardrobe, looks])
+  }, [looks])
   const renderItem = ({ item, index }) => (
     <View
       style={{

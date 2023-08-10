@@ -1,20 +1,20 @@
 import { View, Text, FlatList, Image, TouchableOpacity, useWindowDimensions } from 'react-native'
 import React, { useContext, useState, useRef, useEffect } from 'react'
-import { WardrobeContext } from './Context'
+import { TotalWardrobeContext } from './Context'
 import { useNavigation } from '@react-navigation/native'
 import TopList from './components/TopList'
 import OtherList from './components/OtherList'
 
 
-const MatchItemsList = () => {
+const MatchItemsList = ({ route }) => {
 
   const { width, height } = useWindowDimensions()
-
+  const [totalWardrobe, setTotalWardrobe] = useContext(TotalWardrobeContext)
   const navigation = useNavigation()
-  const [wardrobe, setWardrobe] = useContext(WardrobeContext)
-
-  const tops = wardrobe.filter((w) => w.tag === "top")
-  const others = wardrobe.filter((w) => w.tag !== "top")
+  const { wardrobe } = route.params
+  // console.log(wardrobe)
+  // const tops = wardrobe.filter((w) => w.tag === "top")
+  // const others = wardrobe.filter((w) => w.tag !== "top")
   const [activeTopId, setActiveTopId] = useState();
   // const [activeItemId, setActiveItemId] = useState();
   const [look, setLook] = useState({})
@@ -46,9 +46,9 @@ const MatchItemsList = () => {
 
   //const data = look
 
-  //console.log(looks)
+  // console.log(others)
   useEffect(() => {
-    console.log(look)
+    // console.log(look)
     setLook(look)
   }, [look])
 
@@ -86,7 +86,8 @@ const MatchItemsList = () => {
           style={{ width: width * 0.4, justifyContent: 'center', alignItems: 'center', padding: 10, margin: 15, backgroundColor: '#d7e6e5', borderRadius: 10 }}
           onPress={() => {
             setLooks(looks)
-            //console.log(looks)
+            setTotalWardrobe({ wardrobe, looks })
+            console.log(looks)
             navigation.navigate("All Looks", { looks })
 
           }} >
@@ -96,14 +97,14 @@ const MatchItemsList = () => {
       <View style={{ flex: 1, paddingBottom: 15, }}>
         <View style={{ flex: 1 }}>
           {/* <OtherList other={other} setOther={setOther} /> */}
-          <TopList setTop={setTop} top={top} />
+          <TopList setTop={setTop} top={top} wardrobe={wardrobe} />
         </View>
 
 
         <View style={{ flex: 1 }}>
 
 
-          <OtherList other={other} setOther={setOther} />
+          <OtherList other={other} setOther={setOther} wardrobe={wardrobe} />
           {/* <View style={{ flex: 1, backgroundColor: 'lightyellow' }}>
           <FlatList
             data={others}

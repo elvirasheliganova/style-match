@@ -1,17 +1,17 @@
 import { View, Text, FlatList, TouchableOpacity, Image, useWindowDimensions } from 'react-native'
 import React, { useContext, useState, useRef, useEffect } from 'react'
-import { WardrobeContext } from '../Context'
+import { TotalWardrobeContext } from '../Context'
 
 
 
 
-const OtherList = ({ other, setOther }) => {
+const OtherList = ({ other, setOther, wardrobe }) => {
   const { width, height } = useWindowDimensions()
-  const [wardrobe, setWardrobe] = useContext(WardrobeContext)
-  const others = wardrobe.filter((w) => w.tag !== "top")
+  const [totalWardrobe, setTotalWardrobe] = useContext(TotalWardrobeContext)
+  const others = wardrobe.filter((w) => w.image !== 0 && w.tag !== "top")
   const [activeOtherId, setActiveOtherId] = useState();
   const activeOther = others.find((o) => activeOtherId === o.id)
-
+  //console.warn(others)
   const viewabilityConfig = {
     itemVisiblePercentThreshold: 51,
   };
@@ -22,7 +22,7 @@ const OtherList = ({ other, setOther }) => {
 
     },
   );
-  const handleVisibleOther = () => { }
+  // const handleVisibleOther = () => { }
 
   useEffect(() => {
     setOther(activeOther)
@@ -39,7 +39,7 @@ const OtherList = ({ other, setOther }) => {
           <TouchableOpacity
             key={index}
             style={{ flex: 1, backgroundColor: 'lightblue', width: width * 0.8, height: height * 0.45, }}
-            onPress={handleVisibleOther}>
+            onPress={{}}>
             <Image
 
               style={{ width: '100%', height: '100%' }}
